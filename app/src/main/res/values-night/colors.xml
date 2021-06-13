@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="peach_red">#EF2632</color>
+    <color name="peach_red_pinkish">#FF6962</color>
+    <color name="new_pink1">#ff2e2e</color>
+    <color name="final_select">#ff4747</color>
+    <color name="grey">#D3D3D3</color>
+    <color name="Signup">#666666</color>
+    <color name="dark_blue">#4834d4</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="black">#FF000000</color>
+    <color name="app_main_dark">#19134C</color>
+    <color name="app_main_light">#7232FE</color>
+    <color name="backgroundcolor">#1A2228</color>
+    <color name="card_view">#71A1C4</color>
+    <color name="card_view_text">#F0F5F9</color>
+    <color name="textcolor">#F0F5F9</color>
+    <color name="nav_bar_icon_color">#F0F5F9</color>
+    <color name="Spinner_deaths">#444D56</color>
+</resources>

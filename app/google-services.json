@@ -1,0 +1,43 @@
+{
+  "project_info": {
+    "project_number": "1042698241127",
+    "project_id": "let-strackcovid",
+    "storage_bucket": "let-strackcovid.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1042698241127:android:5b8117ef4cbacb4f4c80c2",
+        "android_client_info": {
+          "package_name": "com.letstrackcovid.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1042698241127-24hv358qh6o4vs9eiat7g735v83tlv9i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.letstrackcovid.app",
+            "certificate_hash": "5d2a920bf639a3ee1277e5c2fcf8ff398adbac5c"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAilaRHOx33JCg8kDHe8t4iieplQCh4SN8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1042698241127-v92fjk8s3la69g48rjpnn2qgtp51sh4u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
