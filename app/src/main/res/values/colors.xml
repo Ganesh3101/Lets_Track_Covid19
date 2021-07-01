@@ -21,7 +21,10 @@
     <color name="backgroundcolor">#F0F5F9</color>
     <color name="card_view">#19134C</color>
     <color name="card_view_text">#F0F5F9</color>
+    <color name="input_data">#444D56</color>
     <color name="textcolor">#000030</color>
     <color name="nav_bar_icon_color">#000030</color>
     <color name="Spinner_deaths">#FFFFFF</color>
+    <color name="News_card">#F0F5F9</color>
+    <color name="splash_screen">#71A1C4</color>
 </resources>

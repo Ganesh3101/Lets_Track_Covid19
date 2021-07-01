@@ -3,49 +3,124 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/fragment_home_profile">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@color/backgroundcolor">
 
-    <TextView
-        android:id="@+id/Username"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:textColor="@color/app_main_dark"
-        android:layout_marginTop="20sp"
-        android:layout_marginLeft="10sp"
-        android:layout_marginRight="10sp"
-        android:layout_marginBottom="10sp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:id="@+id/Username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:textColor="@color/textcolor"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp"
+                android:text="Hello, Ganesh!"
+                android:layout_weight="1"/>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/User_img"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/_022_chevrolet_corvette_z06_1607016574"
+                android:layout_marginEnd="20dp"
+                android:layout_gravity="center"
+                app:civ_border_width="1dp"
+                app:civ_border_color="@color/textcolor"/>
+
+        </LinearLayout>
+
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="100sp"
         android:orientation="horizontal"
-        android:layout_marginTop="10sp"
+        android:layout_marginTop="5sp"
         android:layout_marginLeft="5sp"
         android:layout_marginRight="5sp"
-        android:layout_gravity="center_horizontal">
+        android:layout_gravity="center_horizontal"
+        android:gravity="center">
 
-        <Button
-            android:layout_width="150sp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10sp"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:text="States"/>
+        <LinearLayout
+            android:layout_width="175dp"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/spinner_background">
 
-        <Button
-            android:layout_width="150sp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10sp"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:text="Cities"/>
+            <TextView
+                android:id="@+id/states_text"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="States"
+                android:textAllCaps="true"
+                android:gravity="center"
+                android:textSize="20dp"
+                android:textColor="@color/textcolor"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp" />
 
+            <Spinner
+                android:id="@+id/states_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="175dp"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/spinner_background">
+
+            <TextView
+                android:id="@+id/cities_text"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Cities"
+                android:textAllCaps="true"
+                android:gravity="center"
+                android:textSize="20dp"
+                android:textColor="@color/textcolor"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp" />
+
+            <Spinner
+                android:id="@+id/cities_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"/>
+
+
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -63,46 +138,15 @@
                 android:id="@+id/dailyupdateview"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="15sp"/>
+                android:layout_marginTop="5sp"/>
 
-            <androidx.cardview.widget.CardView
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/featureview"
                 android:layout_width="match_parent"
-                android:layout_height="200sp"
-                android:layout_marginTop="40sp"
-                android:layout_marginLeft="10sp"
-                android:layout_marginRight="10sp"
-                android:elevation="20sp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:background="@color/app_main_dark">
-
-                    <ImageButton
-                        android:id="@+id/mapbtn"
-                        android:layout_width="match_parent"
-                        android:layout_height="150sp"
-                        android:src="@drawable/how_to_save_google_maps_route_offline5_1584447899"/>
-
-                    <TextView
-                        android:id="@+id/textmapbtn"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="5sp"
-                        android:textColor="@color/white"
-                        android:textSize="30sp"
-                        android:text="Map"/>
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <TextView
-                android:id="@+id/test"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="40sp"
-                android:textColor="@color/app_main_dark"/>
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"/>
 
         </LinearLayout>
 

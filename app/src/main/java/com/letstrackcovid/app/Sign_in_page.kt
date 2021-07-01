@@ -18,38 +18,28 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseAuth.AuthStateListener
 import com.google.firebase.auth.FirebaseAuth.getInstance
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
-import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_sign_in_page.*
+import java.io.ByteArrayOutputStream
 
 
 @Suppress("DEPRECATION")
 class Sign_in_page : AppCompatActivity() {
 
-    private lateinit var database: FirebaseDatabase
-    private lateinit var ref: DatabaseReference
     lateinit var mGoogleSignInClient: GoogleSignInClient
     val Req_Code: Int = 123
     private lateinit var firebaseAuth: FirebaseAuth
     var callbackManager = CallbackManager.Factory.create();
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in_page)
 
-
-
         firebaseAuth = getInstance()
-        database = FirebaseDatabase.getInstance()
-        ref = database.getReference("Users")
-
-
 
         FirebaseApp.initializeApp(this)
 
@@ -102,13 +92,79 @@ class Sign_in_page : AppCompatActivity() {
 
             }
             .addOnSuccessListener { result->
-                val email = result.user!!.email
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-                finish()
-                Toast.makeText(this, "You logged with : " + email, Toast.LENGTH_LONG).show()
+
+                val fbName = result.user!!.displayName
+
+                val fbEmail = result.user!!.email
+
+                var fbProfilePicURL = result.user!!.photoUrl.toString()
+
+                var phonenumber = ""
+
+                var bloodgroup = ""
+
+                var age = ""
+
+                var weight = ""
+
+                var state = ""
+
+                var city = ""
+
+                val currentUserUid = firebaseAuth.currentUser!!.uid
+
+                val ref  = FirebaseDatabase.getInstance("https://let-strackcovid-default-rtdb.asia-southeast1.firebasedatabase.app").getReference().child("Users").child("Facebook").child(currentUserUid)
+
+                val fbUpload = fb_upload(fbName.toString(), fbEmail.toString(), fbProfilePicURL.toString(),phonenumber,bloodgroup,age,weight,state,city)
+
+                try {
+                    ref.setValue(fbUpload).addOnCompleteListener {
+
+                        Toast.makeText(this, "data saved successfully", Toast.LENGTH_LONG).show()
+
+                    }
+                }
+                catch (e : Exception)
+                {
+                    Toast.makeText(this,e.message,Toast.LENGTH_LONG).show()
+
+                }
+
+                val baos = ByteArrayOutputStream()
+
+                val image = baos.toByteArray()
+
+                val storageRef = FirebaseStorage.getInstance("gs://let-strackcovid.appspot.com/").reference.child("pics/${FirebaseAuth.getInstance().currentUser?.uid}")
+
+
+                val upload = storageRef.putBytes(image)
+
+                upload.addOnCompleteListener{ uploadTask->
+                    if (uploadTask.isSuccessful)
+                    {
+                        storageRef.downloadUrl.addOnCompleteListener{ urlTask->
+                            urlTask.result?.let {
+                                fbProfilePicURL = it.toString()
+
+                            }
+
+                        }
+                    }
+                    else{
+                        Toast.makeText(this,"ERROR",Toast.LENGTH_LONG).show()
+                    }
+                }
+
+
+
             }
-    }
+
+        intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
+
+            }
+
 
     private fun signInGoogle() {
         val signInIntent: Intent = mGoogleSignInClient.signInIntent
@@ -123,7 +179,7 @@ class Sign_in_page : AppCompatActivity() {
         if (requestCode == Req_Code) {
             val task: Task<GoogleSignInAccount> = GoogleSignIn.getSignedInAccountFromIntent(data)
             handleResult(task)
-        }
+         }
     }
 
     private fun handleResult(completedTask: Task<GoogleSignInAccount>) {
@@ -150,41 +206,74 @@ class Sign_in_page : AppCompatActivity() {
 
                 val googleEmail = account?.email ?: ""
 
-//                if (googleFirstName.isNotEmpty() && googleLastName.isNotEmpty() && googleEmail.isNotEmpty())
-//                {
-//                    var model = Data_upload(googleFirstName,googleLastName,googleEmail)
-//                    var UserUid = ref.push().key
-//
-//                    ref.child(UserUid!!).setValue(model)
-//                }
-//                else
-//                {
-//                    Toast.makeText(this,"User input is null",Toast.LENGTH_LONG).show()
-//                }
+                var googleProfilePicURL = account?.photoUrl.toString()
+
+                var phonenumber = ""
+
+                var bloodgroup = ""
+
+                var age = ""
+
+                var weight = ""
+
+                var state = ""
+
+                var city = ""
+
+                val currentUserUid = firebaseAuth.currentUser!!.uid
+
+                val ref  = FirebaseDatabase.getInstance("https://let-strackcovid-default-rtdb.asia-southeast1.firebasedatabase.app").getReference().child("Users").child("Google").child(currentUserUid)
+
+                val dataUpload = Data_upload(googleFirstName,googleLastName,googleEmail,googleProfilePicURL,phonenumber,bloodgroup,age,weight,state,city)
+
+                try {
+                    ref.setValue(dataUpload).addOnCompleteListener {
+
+                        Toast.makeText(this, "data saved successfully", Toast.LENGTH_LONG).show()
+
+                    }
+                }
+                catch (e : Exception)
+                    {
+                        Toast.makeText(this,e.message,Toast.LENGTH_LONG).show()
+
+                    }
+
+                    val baos = ByteArrayOutputStream()
+
+                    val image = baos.toByteArray()
+
+                    val storageRef = FirebaseStorage.getInstance("gs://let-strackcovid.appspot.com/").reference.child("pics/${FirebaseAuth.getInstance().currentUser?.uid}")
+
+
+                    val upload = storageRef.putBytes(image)
+
+                    upload.addOnCompleteListener{ uploadTask->
+                        if (uploadTask.isSuccessful)
+                        {
+                            storageRef.downloadUrl.addOnCompleteListener{ urlTask->
+                                urlTask.result?.let {
+                                    googleProfilePicURL = it.toString()
+
+                                }
+
+                            }
+                        }
+                        else{
+                             Toast.makeText(this,"ERROR",Toast.LENGTH_LONG).show()
+                            }
+                    }
 
 
 
-//                database = FirebaseDatabase.getInstance().getReference("Users")
-//
-//                database.child("First name").setValue(googleFirstName)
-//                database.child("Last name").setValue(googleLastName)
-//
-////                database.child("Users").child(googleEmail).setValue(googleFirstName)
-//                database.child("Users").child(googleEmail).setValue(googleLastName)
-
+                }
 
                  intent = Intent(this, MainActivity::class.java)
-//                 intent.putExtra("Google First Name", googleFirstName)
-//                 intent.putExtra("Google Last Name", googleLastName)
                  startActivity(intent)
                  finish()
-            }
+
         }
     }
-
-
-
-
 
     override fun onStart() {
         super.onStart()

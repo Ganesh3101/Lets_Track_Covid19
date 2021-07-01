@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="320dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginEnd="10sp"
+    android:layout_marginStart="10sp"
+    app:cardCornerRadius="20sp"
+    app:cardElevation="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/feature_image"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:src="@drawable/_022_chevrolet_corvette_z06_1607016574"
+            android:scaleType="fitXY"/>
+
+        <TextView
+            android:id="@+id/feature_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/card_view"
+            android:text="cars"
+            android:gravity="center"
+            android:textAllCaps="true"
+            android:textColor="@color/card_view_text"
+            android:textSize="30dp"
+            android:textStyle="bold"/>
+
+
+
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>

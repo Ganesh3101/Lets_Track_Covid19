@@ -11,17 +11,15 @@
 
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Help Fragment"
-            android:textAlignment="center"
-            android:textColor="@color/textcolor"
-            android:textSize="40sp"
+            android:text="profile"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="50dp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

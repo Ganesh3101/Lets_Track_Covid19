@@ -1,12 +1,12 @@
 <resources>
-    <string name="app_name">Let\'sTrackCovid</string>
+    <string name="app_name">Let\'sTrack\nCovid</string>
     <string name="title_activity_covid_tracker_maps">Map</string>
     <string name="menu_refresh">menu</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="_160_160_160_160_160_160_email"><![CDATA[      Email]]></string>
     <string name="_160_160_160_160_160_160_name"><![CDATA[      Name]]></string>
-    <string name="_160_160_160_160_160_160_phone"><![CDATA[      Phone No.]]></string>
+    <string name="_160_160_160_160_160_160_mobile"><![CDATA[  Enter Your Number]]></string>
     <string name="_160_160_160_160_160_160_blood"><![CDATA[      Blood Group]]></string>
     <string name="facebook_app_id">533291631028301</string>
     <string name="fb_login_protocol_scheme">fb533291631028301</string>
